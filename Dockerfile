@@ -4,10 +4,22 @@ USER root
 
 WORKDIR /tmp/
 RUN apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install python python-pip python3 python3-pip wget \
-  && wget https://www.python.org/ftp/python/3.5.5/Python-3.5.5.tar.xz \
-  && tar xzvf Python-3.5.5.tar.xz \
-  && cd Python-3.5.0 \
+  && apt-get -qqy --no-install-recommends install python python-pip python3 python3-pip curl \
+  && curl -Ls https://www.python.org/ftp/python/3.5.5/Python-3.5.5.tgz --output python-3.5.tgz \
+  && tar xzvf python-3.5.tgz \
+  && cd python-3.5 \
+  && ./configure \
+  && make \
+  && make install \
+  && curl -Ls https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz --output python-3.6.tgz \
+  && tar xzvf python-3.6.tgz \
+  && cd python-3.6 \
+  && ./configure \
+  && make \
+  && make install \
+  && curl -Ls https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz --output python-3.7.tgz \
+  && tar xzvf python-3.7.tgz \
+  && cd python-3.7 \
   && ./configure \
   && make \
   && make install \
