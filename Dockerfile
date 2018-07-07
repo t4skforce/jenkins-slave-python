@@ -9,5 +9,5 @@ RUN apt-get update -qqy \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
   && chown -R jenkins:jenkins /home/jenkins
-
+WORKDIR /home/jenkins
 USER jenkins
