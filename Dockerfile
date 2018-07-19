@@ -7,13 +7,14 @@ USER root
 COPY install.sh /tmp/install.sh
 WORKDIR /tmp/
 RUN apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install python python-pip python-virtualenv python3 python3-pip python3-virtualenv jython pypy curl \
+  && apt-get -qqy install build-essential python python-pip python-virtualenv python3 python3-pip python3-virtualenv jython pypy curl \
   && pip3 install --default-timeout=240 -U setuptools wheel \
   && pip3 install --default-timeout=240 -U tox virtualenv pylint pipenv \
   && chmod +x /tmp/install.sh \
   && ./install.sh \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
+  && apt-get --auto-remove -y purge build-essential \
   && chown -R jenkins:jenkins /home/jenkins
 WORKDIR /home/jenkins
 USER jenkins
