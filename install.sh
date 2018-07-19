@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-symlink () {
+create_symlink () {
   if [ -e "$2" ]; then
     rm "$2"
   fi
@@ -22,7 +22,7 @@ for VERSION in $PYTHON_VERSIONS;do
   make -s -j8
   make altinstall
     
-  symlink "/opt/python-${MAJOR_VERSION}/bin/python${MAJOR_VERSION}" "/usr/local/bin/python${MAJOR_VERSION}"
-  symlink "/opt/python-${MAJOR_VERSION}/bin/pip${MAJOR_VERSION}" "/usr/local/bin/pip${MAJOR_VERSION}"
+  create_symlink "/opt/python-${MAJOR_VERSION}/bin/python${MAJOR_VERSION}" "/usr/local/bin/python${MAJOR_VERSION}"
+  create_symlink "/opt/python-${MAJOR_VERSION}/bin/pip${MAJOR_VERSION}" "/usr/local/bin/pip${MAJOR_VERSION}"
 
 done
