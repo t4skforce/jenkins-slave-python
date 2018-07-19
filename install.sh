@@ -2,8 +2,12 @@
 set -e
 
 symlink () {
-  [ -e $2 ] && rm $2
-  [ -e $1 ] && ln -s $1 $2
+  if [ -e "$2" ]; then
+    rm "$2"
+  fi
+  if [ -e "$1" ]; then
+    ln -s "$1" "$2"
+  fi
 }
 
 for VERSION in $PYTHON_VERSIONS;do
@@ -17,12 +21,8 @@ for VERSION in $PYTHON_VERSIONS;do
   ./configure --prefix=/opt/python-${MAJOR_VERSION} --cache-file=/opt/python-${MAJOR_VERSION}/config.cache --enable-optimizations > /dev/null
   make -s -j8
   make altinstall
-  ls -la /opt/python-${MAJOR_VERSION}/bin/
-  
-  symlink "/usr/local/bin/python${MAJOR_VERSION}" "/usr/local/bin/python${MAJOR_VERSION}"
-  symlink "/usr/local/bin/pip${MAJOR_VERSION}" "/usr/local/bin/pip${MAJOR_VERSION}"
-  symlink "/usr/local/bin/pyvenv-${MAJOR_VERSION}" "/usr/local/bin/pyvenv-${MAJOR_VERSION}"
-  symlink "/usr/local/bin/easy_install-${MAJOR_VERSION}" "/usr/local/bin/easy_install-${MAJOR_VERSION}"
-  symlink "/usr/local/bin/idle-${MAJOR_VERSION}" "/usr/local/bin/idle-${MAJOR_VERSION}"
+    
+  symlink "/opt/python-${MAJOR_VERSION}/bin/python${MAJOR_VERSION}" "/usr/local/bin/python${MAJOR_VERSION}"
+  symlink "/opt/python-${MAJOR_VERSION}/bin/pip${MAJOR_VERSION}" "/usr/local/bin/pip${MAJOR_VERSION}"
 
 done
