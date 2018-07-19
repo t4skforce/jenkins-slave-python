@@ -6,7 +6,7 @@ for VERSION in $PYTHON_VERSIONS;do
   cd /tmp/
   curl -Ln https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz --output Python-${VERSION}.tgz
   tar zxf Python-${VERSION}.tgz
-  cd Python-${PYTHON27}
+  cd /tmp/Python-${VERSION}
   mkdir -p /opt/python-${MAJOR_VERSION}
   ./configure --prefix=/opt/python-${MAJOR_VERSION}
   ln -s /opt/python-${MAJOR_VERSION}/bin/python${MAJOR_VERSION} /usr/local/bin/python${MAJOR_VERSION}
