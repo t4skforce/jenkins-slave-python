@@ -8,6 +8,7 @@ for VERSION in $PYTHON_VERSIONS;do
   tar zxf Python-${VERSION}.tgz
   cd /tmp/Python-${VERSION}
   mkdir -p /opt/python-${MAJOR_VERSION}
+  ./configure --help
   ./configure --prefix=/opt/python-${MAJOR_VERSION} --enable-optimizations > /dev/null
   make > /dev/null
   make install
