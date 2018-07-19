@@ -8,9 +8,8 @@ for VERSION in $PYTHON_VERSIONS;do
   tar zxf Python-${VERSION}.tgz
   cd /tmp/Python-${VERSION}
   mkdir -p /opt/python-${MAJOR_VERSION}
-  ./configure --help
-  ./configure --prefix=/opt/python-${MAJOR_VERSION} --enable-optimizations > /dev/null
-  make > /dev/null
+  ./configure --prefix=/opt/python-${MAJOR_VERSION} --cache-file=/opt/python-${MAJOR_VERSION}/config.cache --enable-optimizations > /dev/null
+  make -s -j8
   make install
   ls -la /opt/python-${MAJOR_VERSION}/bin/
   ln -s /opt/python-${MAJOR_VERSION}/bin/python${MAJOR_VERSION} /usr/local/bin/python${MAJOR_VERSION}
