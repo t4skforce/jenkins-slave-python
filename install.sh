@@ -17,7 +17,7 @@ for VERSION in $PYTHON_VERSIONS;do
   tar zxf Python-${VERSION}.tgz
   cd /tmp/Python-${VERSION}
   mkdir -p /opt/python-${MAJOR_VERSION}
-  # --enable-optimizations
+  # --enable-optimizations -> can't enable for all as takes to long for dockerhub
   ./configure --prefix=/opt/python-${MAJOR_VERSION} --cache-file=/opt/python-${MAJOR_VERSION}/config.cache > /dev/null
   make -s -j8
   make altinstall
