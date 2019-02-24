@@ -9,7 +9,7 @@ COPY install.sh /tmp/install.sh
 WORKDIR /tmp/
 RUN apt-get update -qqy \
   && apt-get -qqy install ${BUILD_REQUIREMENTS} build-essential python python-pip python-virtualenv python3 python3-pip python3-virtualenv jython pypy openssl curl \
-  && pip3 install --default-timeout=240 -U setuptools wheel > /dev/null \
+  && pip3 install --default-timeout=240 -U setuptools wheel bumpversion > /dev/null \
   && pip3 install --default-timeout=240 -U tox virtualenv pylint pipenv > /dev/null \
   && chmod +x /tmp/install.sh \
   && ./install.sh \
