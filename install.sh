@@ -2,10 +2,11 @@
 set -e
 
 create_symlink () {
-  if [ ! -e "$2" ]; then
-    if [ -e "$1" ]; then
-      ln -s "$1" "$2"
+  if [ -e "$1" ]; then
+    if [ -e "$2" ]; then
+      rm -f "$2"
     fi
+    ln -s "$1" "$2"
   fi
 }
 
