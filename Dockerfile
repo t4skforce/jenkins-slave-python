@@ -1,7 +1,8 @@
 FROM t4skforce/jenkins-slave
 
-ENV PYTHON_VERSIONS '2.7.15 3.4.9 3.5.6 3.6.8 3.7.2'
-ENV BUILD_REQUIREMENTS 'libssl-dev libffi-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev libgdbm-dev libc6-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev tk-dev'
+ARG BUILD_DATE=""
+ARG PYTHON_VERSIONS="2.7.15 3.4.9 3.5.6 3.6.8 3.7.2"
+ARG BUILD_REQUIREMENTS="libssl-dev libffi-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev libgdbm-dev libc6-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev tk-dev"
 
 USER root
 
