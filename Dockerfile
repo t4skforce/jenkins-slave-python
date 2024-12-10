@@ -1,6 +1,6 @@
 FROM t4skforce/jenkins-slave
 
-ARG BUILD_DATE="2024-12-05T21:53:21Z"
+ARG BUILD_DATE="2024-12-10T07:52:09Z"
 ARG PYTHON_VERSIONS="2.7.18 3.4.10 3.5.10 3.6.15 3.7.13"
 ARG BUILD_REQUIREMENTS="libssl-dev libffi-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev libgdbm-dev libc6-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev tk-dev"
 
